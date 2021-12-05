@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reality Mind</title>
+  <!-- Только CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container"><a class="navbar-brand text-uppercase font-weight-bold">Reality Mind</a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="index.html" class="nav-link text-uppercase font-weight-bold">Главная<span class="sr-only">(current)</span></a></li>
+          <li class="nav-item"><a href="liders.html" class="nav-link text-uppercase font-weight-bold">Таблица лидеров</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link text-uppercase font-weight-bold">Обратная связь</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<main>
+
+
+
+  <!-- Services Section -->
+  <section class="section-padding">
+    <div class="container-contact100">
+      <div class="wrap-contact100">
+        <form class="contact100-form validate-form" method="post" action="index.php">
+				<span class="contact100-form-title">Начать тест</span>
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="form_row">
+                <div class="form_row_title">Ваше имя</div>
+                <input id="namer" required="required" type="text" placeholder="Введите ваше имя" class="form_textinput elem_filter_namesearch" data-selector=".portfolio_elem_trigger_text_1">
+              </div>
+            </div>
+              <div class="col-xs-4">
+                <div class="form_row">
+                  <div class="form_row_title">Ваше возраст</div>
+                  <input id="ager" required="required" type="text" placeholder= "Введите ваш возраст" class="form_textinput elem_filter_namesearch" data-selector=".portfolio_elem_trigger_text_1">
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form_row">
+                  <div class="btn">
+                  <button type="button" id="btw_but" onclick="window.location = 'test.html'"class="btn_btw">
+                    <span>Начать</span>
+                  </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <small class="footer-copyright">© 2020 WebDev — All Rights Reserved</small>
+      <ul class="footer-social">
+        <li>
+          <a href="#">
+            <img src="images/icons/facebook.svg" alt="WebDev on Facebook">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/icons/instagram.svg" alt="WebDev on Instagram">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/icons/youtube.svg" alt="WebDev on Youtube">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/icons/twitter.svg" alt="WebDev on Twitter">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  $(function () {
+    $(window).on('scroll', function () {
+      if ( $(window).scrollTop() > 10 ) {
+        $('.navbar').addClass('active');
+      } else {
+        $('.navbar').removeClass('active');
+      }
+    });
+  });
+</script>
+<script>
+  $(document.body).on("click", ".form_row_select_helper", function(){
+    openSelect($(this).siblings("select"));
+  });
+  function openSelect(selector){
+    var element = $(selector)[0], worked = false;
+    if (document.createEvent) { // all browsers
+      var e = document.createEvent("MouseEvents");
+      e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+      worked = element.dispatchEvent(e);
+    } else if (element.fireEvent) { // ie
+      worked = element.fireEvent("onmousedown");
+    }
+    if (!worked) { // unknown browser / error
+      alert("It didn't worked in your browser.");
+    }
+  }
+  $(document.body).on("focus blur", ".form_row .form_textinput", function(e){
+    switch(e.type){
+      case "focusin":
+        $(this).closest(".form_row").addClass("focused");
+        break;
+      case "focusout":
+        $(this).closest(".form_row").removeClass("focused");
+        break;
+    }
+  });
+  $(document.body).on("click", ".form_row.haserror", function(){
+    $(this).removeClass("haserror");
+  });
+
+</script>
+</body>
+</html>
